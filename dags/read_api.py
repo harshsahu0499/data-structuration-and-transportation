@@ -1,3 +1,6 @@
+from datetime import datetime, date, timedelta
+from time import mktime
+
 import requests
 
 
@@ -15,3 +18,7 @@ def read_from_api():
 
     request = response.json();
     return request
+
+
+def to_seconds_since_epoch(input_date: str) -> int:
+    return int(mktime(date.fromisoformat(input_date).timetuple()))
